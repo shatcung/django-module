@@ -47,6 +47,13 @@ class Post(models.Model):
         return super(Post, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
+        slug=reverse('Modulka:post_detail',
+                args=[self.publish.year,
+                      self.publish.month,
+                      self.publish.day,
+                      self.slug
+                      ])
+        print(slug)
         return reverse('Modulka:post_detail',
                        args=[self.publish.year,
                              self.publish.month,
